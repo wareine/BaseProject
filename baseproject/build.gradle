@@ -76,14 +76,6 @@ dependencies {
         exclude module: 'support-annotations'
     }
 
-    /* butterknife */
-    compile('com.jakewharton:butterknife:8.8.1'){
-        exclude module: 'support-annotations'
-    }
-    annotationProcessor('com.jakewharton:butterknife-compiler:8.8.1'){
-        exclude module: 'support-annotations'
-        exclude module: 'butterknife-annotations'
-    }
 
     compile('org.greenrobot:eventbus:3.0.0') {
         exclude module: 'support-v4'
