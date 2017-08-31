@@ -60,6 +60,12 @@ public class LogUtils {
         e(DEFAULT_TAG, msg);
     }
 
+    public static void e(String tag, String msg,Exception e) {
+        if (!isLog || TextUtils.isEmpty(msg)) return;
+        Log.e(tag, msg,e);
+
+    }
+
     /**
      * author  hhj
      * TODO 使用Log来显示调试信息,因为log在实现上每个message有4k字符长度限制
