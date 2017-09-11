@@ -67,7 +67,7 @@ public class UploadFileManager {
     public static UploadFileManager getInstance(Context context) {
         UploadFileManager inst = mInstance;
         if (inst == null) {
-            synchronized (RequestManager.class) {
+            synchronized (UploadFileManager.class) {
                 inst = mInstance;
                 if (inst == null) {
                     inst = new UploadFileManager(context.getApplicationContext());

@@ -101,9 +101,12 @@ dependencies {
         exclude module: 'recyclerview-v7'
     }
     //compile 'com.scwang.smartrefresh:SmartRefreshHeader:1.0.3'//没有使用特殊Header，可以不加这行
+    compile 'in.srain.cube:ultra-ptr:1.0.11'
 
     compile 'com.liulishuo.filedownloader:library:1.6.4'
 
-    compile 'com.jakewharton.timber:timber:4.5.1'
+    compile 'com.orhanobut:logger:2.1.1'
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5.2'
+    releaseCompile 'com.squareup.leakcanary:leakcanary-android-no-op:1.5.2'
     testCompile 'junit:junit:4.12'
 }

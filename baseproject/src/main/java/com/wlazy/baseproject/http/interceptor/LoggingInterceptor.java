@@ -24,7 +24,7 @@ import okio.BufferedSource;
  */
 public class LoggingInterceptor implements Interceptor {
 
-    public static final String TAG = "LoggingInterceptor";
+    public static final String TAG = "OkHttp";
 
     @Override
     public Response intercept(Chain chain) throws IOException {
