@@ -1,14 +1,14 @@
 package com.wlazy.baseproject.utils;
 
 import android.Manifest;
+import android.util.Log;
 
 import com.tbruyelle.rxpermissions2.RxPermissions;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import io.reactivex.functions.Consumer;;
-import timber.log.Timber;
+import io.reactivex.functions.Consumer;
 
 /**
  * Created by jess on 17/10/2016 10:09
@@ -48,10 +48,10 @@ public class PermissionUtil {
                         @Override
                         public void accept(Boolean granted) throws Exception {
                             if (granted) {
-                                Timber.tag(TAG).d("Request permissons success");
+                                LogUtils.d("Request permissons success");
                                 requestPermission.onRequestPermissionSuccess();
                             } else {
-                                Timber.tag(TAG).d("Request permissons failure");
+                                LogUtils.d("Request permissons failure");
                                 requestPermission.onRequestPermissionFailure();
                             }
                         }
