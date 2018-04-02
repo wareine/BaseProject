@@ -126,14 +126,26 @@ public class RetrofitClient {
      */
     public <T> T createNetService(Class<T> iServiceClass) {
         if (retrofit == null) {
-            retrofit = new Retrofit.Builder().baseUrl("https://github.com/square/retrofit/")
-                    .addConverterFactory(GsonConverterFactory.create())//gson转换器
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//rxjava2支持
-                    .client(new OkHttpClient.Builder().build())
-                    .build();
+            retrofit = defaultRetrofit("https://github.com/square/retrofit/");
 
         }
         return retrofit.create(iServiceClass);
+    }
+
+    private static OkHttpClient defaultOkHttpClient() {
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder();
+        clientBuilder.connectTimeout(DefaultParams.CONNECTION_TIME_OUT, TimeUnit.SECONDS);
+        clientBuilder.readTimeout(DefaultParams.READER_TIME_OUT, TimeUnit.SECONDS);
+        clientBuilder.writeTimeout(DefaultParams.WRITE_TIME_OUT, TimeUnit.SECONDS);
+        return clientBuilder.build();
+    }
+
+    private static Retrofit defaultRetrofit(String baseUrl) {
+        return new Retrofit.Builder().baseUrl(baseUrl)
+                .addConverterFactory(GsonConverterFactory.create())//gson转换器
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//rxjava2支持
+                .client(defaultOkHttpClient())
+                .build();
     }
 
 
