@@ -84,6 +84,7 @@ public class Transformers {
             @Override
             public Publisher<T> apply(Flowable<ResponseBody> upstream) {
                 return upstream.map(new Function<ResponseBody, T>() {
+
                     @Override
                     public T apply(ResponseBody responseBody) throws Exception {
                         String response = responseBody.string();
@@ -128,6 +129,7 @@ public class Transformers {
             @Override
             public Publisher<T> apply(Flowable<ResponseBody> upstream) {
                 return upstream.map(new Function<ResponseBody, T>() {
+
                     @Override
                     public T apply(ResponseBody responseBody) throws Exception {
                         String response = responseBody.string();
