@@ -16,6 +16,7 @@ import retrofit2.http.POST;
 import retrofit2.http.Part;
 import retrofit2.http.PartMap;
 import retrofit2.http.Path;
+import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
 
@@ -32,6 +33,20 @@ public interface IBaseService {
     @FormUrlEncoded
     @POST
     Flowable<ResponseBody> postJson(@Url String url, @Body RequestBody route);
+
+    @FormUrlEncoded
+    @POST("/{func}")
+    @Headers("Content-Type:application/x-www-form-urlencoded; charset=utf-8")
+    Flowable<ResponseBody> postFunc(@Path("func") String funcName, @FieldMap Map<String, String> params);
+
+    @FormUrlEncoded
+    @GET("/{func}")
+    Flowable<ResponseBody> getFunc(@Path("func") String funcName, @QueryMap Map<String, String> params);
+
+    @Headers({"Content-Type: application/json", "Accept: application/json"})//需要添加头
+    @FormUrlEncoded
+    @POST
+    Flowable<ResponseBody> postFunc(@Path("func") String funcName, @Body RequestBody route);
 
     /**
      * 下载文件，返回数据流
